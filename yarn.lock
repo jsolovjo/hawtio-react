@@ -1020,7 +1020,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.37.5"
     eslint-plugin-react-hooks: "npm:^6.1.1"
     eslint-plugin-testing-library: "npm:^7.16.2"
-    prettier: "npm:^3.8.3"
+    prettier: "npm:3.8.3"
     typescript: "npm:^5.9.3"
     typescript-eslint: "npm:^8.58.2"
   languageName: unknown
@@ -11768,7 +11768,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.8.3":
+"prettier@npm:3.8.3":
   version: 3.8.3
   resolution: "prettier@npm:3.8.3"
   bin:
