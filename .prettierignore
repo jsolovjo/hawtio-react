@@ -2,6 +2,7 @@ build
 coverage
 dist
 .yarn
+.yarnrc.yml
 
 # any directories specifically labelled ignore
 **/ignore/**
