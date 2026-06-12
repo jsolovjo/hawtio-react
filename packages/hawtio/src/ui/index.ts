@@ -1,6 +1,6 @@
-export * from './hooks'
-export { HawtioLoadingPage } from './page'
-export { FilteredTable, ExpandableText } from './util'
 export { Hawtio } from '@hawtiosrc/Hawtio'
+export * from './hooks'
+export { HawtioLoadingPage, PageContext } from './page'
+export { ExpandableText, FilteredTable } from './util'
 // Hawtio React component
 export * from './../Hawtio'
