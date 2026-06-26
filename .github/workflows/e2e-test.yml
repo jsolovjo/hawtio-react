@@ -1,7 +1,7 @@
 name: E2E Test
 
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - main
       - 2.2.x
@@ -47,13 +47,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
-        if: ${{ github.event_name == 'pull_request_target' }}
-        with:
-          ref: 'refs/pull/${{ github.event.number }}/merge'
-          persist-credentials: false
-      - name: Checkout code
-        uses: actions/checkout@v7
-        if: ${{ github.event_name == 'push' }}
         with:
           persist-credentials: false
       - name: Docker Setup QEMU
@@ -198,7 +191,6 @@ jobs:
     permissions:
       checks: write
       actions: read
-      pull-requests: write
     steps:
       - name: Determine Hawtio branch
         id: determine-hawtio-branch
@@ -249,16 +241,3 @@ jobs:
       - name: Update summary
         run: |
           cat summary.md >> $GITHUB_STEP_SUMMARY
-      - uses: tibdex/github-app-token@v2
-        if: github.event_name == 'pull_request_target'
-        id: generate-token
-        with:
-          app_id: ${{ secrets.HAWTIO_CI_APP_ID }}
-          private_key: ${{ secrets.HAWTIO_CI_PRIVATE_KEY }}
-      - name: Comment PR with summary
-        if: github.event_name == 'pull_request_target'
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          github-token: ${{ steps.generate-token.outputs.token }}
-          file-path: summary.md
-          comment-tag: execution
